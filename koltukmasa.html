@@ -1,0 +1,449 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css"> 
+        <body>
+            <nav class="navbar navbar-expand-md navbar-dark bg-success mb-4">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Kartepe Belediyesi Koltuk Masa</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav>
+
+          <div class = "firstPart">
+            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+                <h1 class="display-3 fw-bold">KARTEPE BELEDİYESİ  </h1>
+                <h3 class="fw-normal text-muted mb-3">Sandalye-Masa Kiralama</h3>
+              </div>
+              <div class="product-device shadow-sm d-none d-md-block"></div>
+              <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+            </div>
+          </div>
+          <div id="secondPart">
+            <div class="popMesaj">
+              <p style = "font-size: 24px; color: black"><strong>Kartepe Belediyesi Masa / Sandalye Hizmeti</strong></p>
+              <p style = "font-size: 18px; color: green">Sizlere belediyemizin sunmakta oldu&#287;u sandalye ve masa kiralama hizmetlerinden bahsetmekten mutluluk duyuyoruz. Belediyemiz, toplumumuzun &ccedil;e&#351;itli etkinliklerini ve organizasyonlar&#305;n&#305; daha konforlu ve i&#351;levsel bir hale getirebilmek amac&#305;yla bu hizmetleri sunmaktad&#305;r.</p>
+              <p style = "font-size: 24px; color: black"><strong>Nasıl Kiralama Yapılır?</strong></p>        
+              <p style = "font-size: 16px; color: green">Belediyemizin sandalye ve masa kiralama hizmetlerinden faydalanmak olduk&ccedil;a kolayd&#305;r. Kiralama talebinde bulunmak i&ccedil;in, resmi internet sitemizdeki &quot;Sandalye ve Masa Kiralama&quot; b&ouml;l&uuml;m&uuml;ne girerek gerekli bilgileri doldurman&#305;z yeterlidir.Ekip arkada&#351;lar&#305;m&#305;z talebinizi ald&#305;ktan sonra en k&#305;sa s&uuml;rede sizinle ileti&#351;ime ge&ccedil;eceklerdir.</p>
+              <p style = "font-size: 20px; color: rgb(6, 40, 210)"><strong>Kartepe Belediyesi</strong></p></div> </div>
+          </div>
+          <div class="thirdPart" style = "height: 350px;">
+            <div class="info-box">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <div class="row mb-3 text-center">
+                    <div class="col-md-3 themed-grid-col"><h6 style>Sandalye Kiralama</h6>
+                      <p id="adetValue" style="color: rgb(0, 0, 0); font-size: 16px;"></p>
+                      <h6>Sandalye Başına Ücret</h6>
+                      <p id="sandalyePlaceholder" style = "color: rgb(0, 0, 0); font-size: 16px;">- TL</p>
+                      <h6>Kiralanmak istenen sandalye sayısı?</h6>
+                        <input type="number" id="sandalyeInput" min="0" value="0" /></p></div>
+                    <div class="col-md-6 themed-grid-col"><h6>Masa Kiralama</h6>
+                      <p id="adetValue2" style="color: rgb(0, 0, 0); font-size: 16px;"></p>
+                      <h6>Masa Başına Ücret</h6>
+                      <p id="masaPlaceholder" style = "color: rgb(0, 0, 0); font-size: 16px;">- TL</p>
+                      <h6>Kiralanmak istenen masa sayısı?</h6>
+                        <input type="number" id="masaInput" min="0" value="0" max=""/></p></div>
+                    <div class="col-md-3 themed-grid-col"><h6 style = "font-size: 20px; margin-right: 200px; margin-top: 1px;">Toplam Ücret</h6><p id="result" style = "color: rgb(0, 0, 0); font-size: 20px; margin-right: 200px" ></p>
+                      <button id="myButton" style="width: 100px; height: 40px; margin-top: 100px; margin-right: 200px;">Bilgiler</button></div>
+                  </div>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                  <img class="bd-placeholder-img" width="250" height="250" src="img/kartepelogo.png" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div id="fifthPart">
+              <div class="container" style = "color: white">
+                <main>      
+                  <form>
+                  <div class="row g-5">
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                      <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-success">Ücret Bilgisi</span>
+                        <span class="badge bg-success rounded-pill">2</span>
+                      </h4>
+                      <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                          <div>
+                            <h6 class="my-0">SANDALYELER</h6>
+                            <small class="text-body-secondary">Toplam fiyat</small>
+                          </div>
+                          <span id="sandalye-ucret">0₺</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                          <div>
+                            <h6 class="my-0">MASALAR</h6>
+                            <small class="text-body-secondary">Toplam fiyat</small>
+                          </div>
+                          <span id="masa-ucret">0₺</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                          <span>Toplam (TL)</span>
+                          <strong id = "toplam-ucret">0₺</strong>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="col-md-7 col-lg-8">
+                      <h4 class="mb-3">Adres Bilgileri</h4>
+                      <form class="needs-validation" novalidate="">
+                        <div class="row g-3">
+                          <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Vatandaşın İsim</label>
+                            <input type="text" class="form-control" id="firstName" required/>
+                          </div>
+              
+                          <div class="col-sm-6">
+                            <label for="lastName" class="form-label">Vatandaşın Soyisim</label>
+                            <input type="text" class="form-control" id="lastName" required/>
+
+                          </div>
+              
+                          <div class="col-12">
+                            <label for="username" class="form-label">Vatandaşın TC Kimlik Numarası</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text">TC</span>
+                              <input type="text" class="form-control" id="tckimlik" placeholder="Kimlik" required/>
+                            <div class="invalid-feedback">
+                                
+                              </div>
+                            </div>
+                          </div>
+              
+                          <div class="col-12">
+                            <label for="email" class="form-label">Email<span class="text-body-secondary"></span></label>
+                            <input type="email" class="form-control" id="email" placeholder="ornek@mail.com" required/>
+                            <div class="invalid-feedback">
+                              Vatandaş Email
+                            </div>
+                          </div>
+              
+                          <div class="col-12">
+                            <label for="address" class="form-label">Temin Edilmesi İstenen Adres</label>
+                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required/>
+                            <div class="invalid-feedback">
+                              
+                            </div>
+                          </div>
+              
+                          <div class="col-12">
+                            <label for="address2" class="form-label">Vatandaşın Telefon</label>
+                            <input type="text" class="form-control" id="address2" placeholder="05XXXXXXXXX" required/>
+                          </div>
+              
+                          <div class="col-md-5">
+                            <label for="country" class="form-label">Mahalle</label>
+                            <select class="form-select" id="country">
+                              <option value="">Bölge</option>
+                              <option id="mahalleler">MAHALLELER</option>
+                            </select>
+                          </div>
+                          <div class = "col-md-3">
+                            <label class="custom-checkbox">Ödemesi Yapıldı.
+                              <input type="checkbox" checked="checked" id = "odeme-check">
+                              <span class="checkmark" ></span>
+                            </label>
+                          </div>
+                          
+                        </div>
+
+                        <hr class="my-4">
+              
+                        <h4 class="mb-3">Ödeme</h4>
+                        
+                        <input id = "odeme-buton" class="w-100 btn btn-success btn-lg" type="submit" value = "TAMAMLA"></input>
+                    </div>
+                  </div>
+                </form>
+                </main>
+              
+              </div>
+            </div>
+            
+
+
+
+        
+        
+
+        <div id="result"></div>  
+        <script>
+          let result1 = 0;
+          let result2 = 0;
+        
+          document.getElementById("sandalyeInput").addEventListener("input", function() {
+            const inputValue = parseFloat(this.value);
+        
+            if (!isNaN(inputValue)) {
+              result1 = inputValue * 15;
+              document.getElementById("sandalye-ucret").textContent = result1 + "₺";
+              updateResult();
+            }
+          });
+        
+          document.getElementById("masaInput").addEventListener("input", function() {
+            const inputValue = parseFloat(this.value);
+        
+            if (!isNaN(inputValue)) {
+              result2 = inputValue * 70;
+              document.getElementById("masa-ucret").textContent = result2 + "₺";
+              updateResult();
+            }
+          });
+        
+          function updateResult() {
+            const totalResult = result1 + result2;
+            document.getElementById("toplam-ucret").textContent = totalResult + " TL";
+            document.getElementById("result").textContent = totalResult + " TL";
+          }
+        </script>
+        <!--MAHALLE EKLEME-->
+        <script>
+          const neighborhoods = [
+            "ACISU MAHALLESİ",
+            "ARSLANBEY MAHALLESİ",
+            "ATAEVLER MAHALLESİ",
+            "ATAŞEHİR MAHALLESİ",
+            "BALABAN MAHALLESİ",
+            "ÇEPNİ MAHALLESİ",
+            "DERBENT MAHALLESİ",
+            "DUMLUPINAR MAHALLESİ",
+            "EMEKEVLER MAHALLESİ",
+            "ERTUĞRUL GAZİ MAHALLESİ",
+            "EŞME MAHALLESİ",
+            "EŞMEAHMEDİYE MAHALLESİ",
+            "FATİH SULTAN MEHMET MAHALLESİ",
+            "HAVLUBURUN MAHALLESİ",
+            "İBRİKDERE MAHALLESİ",
+            "İSTASYON MAHALLESİ",
+            "KARATEPE MAHALLESİ",
+            "KETENCİLER MAHALLESİ",
+            "KÖSEKÖY MAHALLESİ",
+            "MAŞUKİYE MAHALLESİ",
+            "NUSRETİYE MAHALLESİ",
+            "PAZARÇAYIRI MAHALLESİ",
+            "RAHMİYE MAHALLESİ",
+            "SARIMEŞE MAHALLESİ",
+            "SERİNLİK MAHALLESİ",
+            "SUADİYE MAHALLESİ",
+            "SULTANİYE MAHALLESİ",
+            "ŞEVKATİYE MAHALLESİ",
+            "ŞİRİNSULHİYE MAHALLESİ",
+            "UZUNBEY MAHALLESİ",
+            "UZUNÇİFTLİK MAHALLESİ",
+            "UZUNTARLA MAHALLESİ"
+          ];
+        
+          // Get the select element
+          const selectElement = document.getElementById('country');
+        
+          // Get the "MAHALLELER" option
+          const mahallelerOption = document.getElementById('mahalleler');
+        
+          // Function to add neighborhoods to the select dropdown
+          function populateNeighborhoods() {
+            neighborhoods.forEach(function (neighborhood) {
+              const option = document.createElement('option');
+              option.textContent = neighborhood;
+              selectElement.appendChild(option);
+            });
+          }
+        
+          // Populate the neighborhoods when the page loads
+          populateNeighborhoods();
+        </script>
+        <!--EKRAN KAYDIRMA-->
+        <script>
+          document.getElementById("myButton").addEventListener("click", function() {
+              const fifthPart = document.getElementById("fifthPart");
+              fifthPart.scrollIntoView({ behavior: "smooth" });
+          });
+      </script>
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+        
+        
+          <script type="module">
+               import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+               import { getFirestore, doc, getDoc, getDocs, collection, query , where, updateDoc,arrayUnion, arrayRemove, setDoc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+               import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyDenol5uVp5yDBBnUCNTonO9cQUU-trWF8",
+                authDomain: "kartepebelediye.firebaseapp.com",
+                projectId: "kartepebelediye",
+                storageBucket: "kartepebelediye.appspot.com",
+                messagingSenderId: "993270259189",
+                appId: "1:993270259189:web:9f2c893c694f1d768b14bc",
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+            
+
+
+
+            async function updateAdetValue() {
+                const sayi_ = doc(db, "bilgi", "adet");
+
+                const docSnap2 = await getDoc(sayi_); 
+                if (docSnap2.exists()) {
+                    const masa = docSnap2.data().masa;
+                    const sandalye = docSnap2.data().sandalye;
+                    const masa_fiyat = docSnap2.data().masa_fiyat
+                    const sandalye_fiyat = docSnap2.data().sandalye_fiyat
+
+
+                    const sandalyefiyat = document.getElementById("sandalyePlaceholder");
+                    sandalyefiyat.textContent = sandalye_fiyat + " TL";
+                    const masafiyat = document.getElementById("masaPlaceholder");
+                    masafiyat.textContent = masa_fiyat + " TL";
+                    
+                    const adetValueElement = document.getElementById("adetValue");
+                    adetValueElement.textContent = `Depodaki Mevcut Sayı: ${masa}`;
+
+                    const adetValueElement2 = document.getElementById("adetValue2");
+                    adetValueElement2.textContent = `Depodaki Mevcut Sayı: ${sandalye}`;
+                } else {
+                    console.log("No such document!");
+                }
+            }
+            updateAdetValue();
+
+            const paymentButton = document.getElementById("odeme-buton");
+paymentButton.addEventListener("click", async function(event) {
+  event.preventDefault();
+  const toplamUcretElement = document.getElementById("toplam-ucret");
+  const toplamUcret = toplamUcretElement.textContent;
+  const tckimlikInput = document.getElementById("tckimlik");
+  const tckimlikValue = tckimlikInput.value;
+  const isimInput = document.getElementById("firstName");
+  const isimValue = isimInput.value;
+  const soyisimInput = document.getElementById("lastName");
+  const soyisimValue = soyisimInput.value;
+  const mailInput = document.getElementById("email");
+  const mailValue = mailInput.value;
+  const adresInput = document.getElementById("address");
+  const adresValue = adresInput.value;
+  const adres2Input = document.getElementById("address2");
+  const adres2Value = adres2Input.value;
+  const mahalleInput = document.getElementById("country");
+  const mahalleValue = mahalleInput.value;
+  const masaInput = document.getElementById("masaInput");
+  const masaValue = masaInput.value;
+  const sandalyeInput = document.getElementById("sandalyeInput");
+  const sandalyeValue = sandalyeInput.value;
+  const odemeCheck = document.getElementById("odeme-check");
+  
+  if(odemeCheck.checked){
+    await setDoc(doc(db, "kullanicilar", tckimlikValue), {
+  isim: isimValue,
+  soyisim: soyisimValue,
+  mail: mailValue,
+  tc: tckimlikValue,
+  adres: adresValue + " " + " " + mahalleValue,
+  telefon: adres2Value,
+  alinanmasa: masaValue,
+  alinansandalye: sandalyeValue,
+  toplamucret: toplamUcret,
+  odeme: true,
+});
+location.reload();
+  }else{
+    await setDoc(doc(db, "kullanicilar-odemesiz", tckimlikValue), {
+  isim: isimValue,
+  soyisim: soyisimValue,
+  mail: mailValue,
+  tc: tckimlikValue,
+  adres: adresValue + " " + " " + mahalleValue,
+  telefon: adres2Value,
+  alinanmasa: masaValue,
+  alinansandalye: sandalyeValue,
+  toplamucret: toplamUcret,
+  odeme: false,
+});
+location.reload();
+  }
+  
+
+
+
+const adetler = doc(db, "bilgi", "adet");
+const docSnap2 = await getDoc(adetler);
+                if (docSnap2.exists()) {
+                    const masa = docSnap2.data().masa;
+                    const sandalye = docSnap2.data().sandalye;
+
+                    const yeniMasaAdet = masa - masaValue;
+                    const yeniSandalyeAdet = sandalye - sandalyeValue;
+
+                    // Veritabanına güncellenmiş değeri kaydedin
+                    await updateDoc(adetler, {
+                        masa: yeniMasaAdet,
+                        sandalye: yeniSandalyeAdet,
+                    });
+};
+});
+
+            //Buton ile sayı arttırma
+            document.getElementById("myButton").onclick = async function() {
+       const sayi_ = doc(db, "bilgi", "adet");
+       const azaltAdetInput = document.getElementById("azaltAdetInput");
+       const azaltAdet = parseInt(azaltAdetInput.value, 10);
+                if (isNaN(azaltAdet) || azaltAdet < 1) {
+                    alert("Hatalı değer girdiniz! Lütfen 1 veya daha büyük bir sayı girin.");
+                    return;
+                }
+
+// Veritabanından "adet" alanını alın
+                const docSnap2 = await getDoc(sayi_);
+                if (docSnap2.exists()) {
+                    const masa = docSnap2.data().masa;
+
+                    const yeniAdet = masa - azaltAdet;
+
+                    if (yeniAdet < 0) {
+                        alert("Lütfen geçerli bir sayı giriniz.!");
+                        return;
+                    }
+
+                    await updateDoc(sayi_, {
+                        masa: yeniAdet
+                    });
+
+     
+                    var veriListesi = document.getElementById("veriListesi");
+                    var li = document.createElement("li");
+                    li.textContent = `Güncellenmiş Veri: ${yeniAdet} (Azaltılan Adet: ${azaltAdet})`;
+                    veriListesi.appendChild(li);
+                } else {
+                    console.log("No such document!");
+                }
+            };
+
+            auth.onAuthStateChanged(function (user) {
+    if (user) {
+      console.log(user);
+    } else {
+      window.location.href = 'login.html';
+    }
+  });
+          </script>
+
+          
+        </body>
+    </head>
+</html>

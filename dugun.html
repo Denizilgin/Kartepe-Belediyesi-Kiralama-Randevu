@@ -1,0 +1,373 @@
+  <html>
+    <head>
+        <title>Kartepe Belediyesi</title>
+        <link rel="stylesheet" type="text/css" href="style.css"> 
+        <link rel="stylesheet" type="text/css" href="dropdowns.css"> 
+        <link rel="stylesheet" type="text/css" href="accordion.css">
+        <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Google+Sans:300,400,500'><link rel="stylesheet" href="calendar.css"> 
+        <link rel="stylesheet" type="text/css" href="calendar.css"> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+        <style>
+
+            
+          </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Kartepe Belediyesi</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+            </div>
+          </nav>
+          <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary bg-success">
+            <div class="col-md-6 p-lg-5 mx-auto my-5">
+              <h1 class="display-3 fw-bold">KARTEPE BELEDİYESİ  </h1>
+              <h3 class="fw-normal text-muted mb-3">Düğün Salonu Randevu Sistemi</h3>
+            </div>
+            <div class="product-device shadow-sm d-none d-md-block"></div>
+            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+          </div>
+              <div id="fifthPart">
+                <div class="row mb-3 text-center" style = "height: 350px;">
+                  <div class="col-md-4 themed-grid-col"><div id="app">
+                    <div class="container">
+                      <Calendar />
+            
+                    </div>
+                    <div class="col-md-5" style = "margin-top: -100px; ">
+                      <label class="form-label" >Düğün Saati</label>
+                      <select class="form-select" id="saat" required="">
+                        <option value="12:00">12:00</option>
+                        <option value="17:00">17:00</option>
+                      </select>
+                    </div>
+                  </div></div>
+                  <div class="col-md-4 themed-grid-col"> <div class="col">
+                    <div class="dropdown-menu d-block position-static border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px"  data-bs-theme="dark" style="text-align:center">
+                        <div id = "dropdown-salonlar">
+                            <div class="form-control bg-dark" id="selectedItemPlaceholder" placeholder="">Salon seçiniz</div>
+                        <ul class="list-unstyled mb-0" id="dropdownItems">
+                          <!-- Buraya JavaScript ile dinamik olarak eklenen öğeler gelecek -->
+                        </ul>
+                        </div>
+                        <!-- Remove the input field -->
+                        
+                      </div>
+                      
+                  </div></div>
+                  <div class="col-md-4 themed-grid-col"> <div class="info-tab2" style = "height: 300px;">
+                    <div class="content">
+                      <h5>Adres</h5>
+                      <p id="adresPlaceholder">Salon seçiniz...</p>
+                      <h5>Kapasite</h5>
+                      <p id="kapasitePlaceholder">Salon seçiniz...</p>     
+                      <h5>Uygunluk</h5>
+                      <p id="musaitlikPlaceholder"">Salon Seçiniz...</p>             
+                    </div>
+                </div></div>
+                </div>
+                <div class="container" style = "color: white">
+                  <main>        
+                    <div class="row g-5">
+                      <div class="col-md-5 col-lg-4 order-md-last">
+
+                      </div>
+  
+                      <div class="col-md-7 col-lg-8">
+                        <h4 class="mb-3">Adres Bilgileri</h4>
+                        <form class="needs-validation" novalidate="">
+                          <div class="row g-3">
+                            <div class="col-sm-6">
+                              <label for="firstPerson" class="form-label">Evlenicek 1. Kişinin İsim-Soyisim</label>
+                              <input type="text" class="form-control" id="firstPerson" required>
+                            </div>
+                
+                            <div class="col-sm-6">  
+                              <label for="secondPerson" class="form-label">Evlenicek 2. Kişinin İsim-Soyisim</label>
+                              <input type="text" class="form-control" id="secondPerson" placeholder="Eğer Sünnet Düğünü İse Boş Bırakın" required>
+  
+                            </div>
+                
+                            <div class="col-12">
+                              <label for="tc1" class="form-label">Evlenicek 1. Kişinin TC Kimlik Numarası</label>
+                              <div class="input-group has-validation">
+                                <span class="input-group-text">TC</span>
+                                <input type="text" class="form-control" id="tckimlik1" placeholder="Kimlik" required>
+                              <div class="invalid-feedback">
+                                  
+                                </div>
+                              </div>
+                            </div>
+                
+                            <div class="col-12">
+                              <label for="tc2" class="form-label">Evlenicek 2. Kişinin TC Kimlik Numarası</label>
+                              <div class="input-group has-validation">
+                                <span class="input-group-text">TC</span>
+                                <input type="text" class="form-control" id="tckimlik2" placeholder="Eğer Sünnet Düğünü İse Boş Bırakın">
+                              <div class="invalid-feedback">
+                                  
+                                </div>
+                              </div>
+                            </div>
+                                
+                            <div class="col-12">
+                              <label for="address2" class="form-label">Telefon Numarası</label>
+                              <input type="text" class="form-control" id="telefon" placeholder="05XXXXXXXXX" required>
+                            </div>
+                
+                            <div class="col-md-5">
+                              <label for="country" class="form-label">Düğün Tipi</label>
+                              <select class="form-select" id="dugun" required="">
+                                <option value="Evlendirme">Evlendirme Düğünü</option>
+                                <option value="Sünnet">Sünnet Düğünü</option>
+                              </select>
+                            </div>
+                            
+                            
+                          </div>
+  
+                          <hr class="my-4">
+                
+                          <h4 class="mb-3">Ödeme</h4>
+                          
+                          <input id = "odeme-buton" class="w-100 btn btn-primary btn-lg" type="submit"></input>
+                      </div>
+                    </div>
+                  </main>
+                
+                </div>
+              </div>
+        <!--
+          <div class="google-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24185.176487394052!2d30.02137477246835!3d40.7367894689201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb50227dea83eb%3A0x933344e9e9f8a4e5!2sKartepe%20Belediyesi!5e0!3m2!1str!2str!4v1691129945214!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        -->
+
+        <!--<div class="accordionMenu">
+            <ul class="ul_Acc">
+                <li>
+                    <input type="checkbox" checked>
+                    <i class="arrow"></i>
+                    <h2 class = "h2_Acc"><i class="fas fa-question"></i>Başvuru İçin Gerekli Belgeler Neler?</h2>
+                    <p>- Nüfus cüzdanının aslı ve fotokopisi,</p>
+                    <p>- Vesikalık fotoğraf, 5 adet (-son 6 ay içerisinde çekilmiş olmalı, -T. M. K.’nın 36. Maddesine göre kadınlarda alın, çene ve yüz tamamen görünecek, -fotokopi veya bilgisayardan çoğaltılan fotoğraflar geçersizdir.)</p>
+                    <p>- Yerleşim Yeri Dökümü (E-Devlet üzerinden alınabilir)</p>
+                    <p>- Sağlık Raporu</p>
+                </li> 
+                <li>
+                    <input type="checkbox" checked>
+                    <i class="arrow"></i>
+                    <h2 class = "h2_Acc"><i class="fas fa-question"></i>Evlenme Yaşı</h2>
+                    <p>18 yaşını doldurmuş olmak zorunludur.</p>
+                    <p>Doldurmayan kişiler;
+                      17 yaşını doldurmuş ise; anne ve babanın imzası alınarak evlenebilirler. (Başvuruya anne ve baba, çiftlerle birlikte gelerek müracaat etmeleri gerekmektedir.)
+                      16 yaşını doldurmuş ise; mahkemenin vereceği (muvafakatname) “evlenebilir kararı” ile müracaat yapabilir. </p>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <i class="arrow"></i>
+                    <h2 class = "h2_Acc"><i class="fas fa-question"></i>Yabancı Uyruklar İçin Evlenme</h2>
+                    <p>1. Yabancı uyruklu vatandaşlar bağlı bulundukları konsolosluktan alacakları Türkçe Bekarlık Belgelerini (APOSTİLLİ VE ÇOK DİLLİ BELGELER HARİÇ) Kaymakamlığa onaylatmalı.
+                    </p>
+                    <p>2. Çiftler Türkçe bilmiyor ise; başvuru esnasında yeminli tercüman bulunduracaklardır. Beyanları tercüman eşliğinde doldurulmalı ve nikah esnasında tercüman bulundurmalıdır.</p>
+                                          
+                    <p>3. Pasaportlar, Türkçe tercümesi ile birlikte notere tasdik ettirilmeli ve geçerlilik süresinin de başvuru esnasında dolmamış olması gerekmektedir.</p>
+
+                </li>
+
+            </ul>
+        </div-->
+          
+          
+        
+
+    
+        
+        
+        
+
+       
+          
+        <script type="module">
+               import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+               import { getFirestore, doc, getDoc, getDocs, collection, query , where, updateDoc,arrayUnion, arrayRemove, setDoc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+               import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyDenol5uVp5yDBBnUCNTonO9cQUU-trWF8",
+                authDomain: "kartepebelediye.firebaseapp.com",
+                projectId: "kartepebelediye",
+                storageBucket: "kartepebelediye.appspot.com",
+                messagingSenderId: "993270259189",
+                appId: "1:993270259189:web:9f2c893c694f1d768b14bc",
+            };
+
+            const app = initializeApp(firebaseConfig);
+
+            const db = getFirestore(app);
+            const auth = getAuth(app)
+            const masaSayisi = doc(db, "bilgi", "adet");            
+
+            function selectedDateKontrol(){
+                const dropdownSalonlarDiv = document.getElementById("dropdown-salonlar"); 
+                if(typeof selectedDate === 'undefined'){
+                    
+                    dropdownSalonlarDiv.style.pointerEvents = "none";
+                }else{dropdownSalonlarDiv.style.pointerEvents = "auto";}
+                
+            }
+            selectedDateKontrol();
+            const intervalID = setInterval(selectedDateKontrol, 1000);  
+
+            //Düğün salonu veritabanı ayarları
+            document.addEventListener("DOMContentLoaded", async function () {
+      const dugunadet = doc(db, "bilgi", "adet");
+      const docSnap = await getDoc(dugunadet);  
+      
+  
+      const dropdownItemsContainer = document.getElementById("dropdownItems");
+      let items = [];
+      const itemsCollectionRef = collection(db, "salonlar"); 
+      const querySnapshot = await getDocs(itemsCollectionRef);
+      querySnapshot.forEach((itemDoc) => {  
+      const item = {
+        color: "primary", 
+        text: itemDoc.id, 
+      };
+      items.push(item);
+    });
+    const itemCount = querySnapshot.size
+      // Belirtilen sayıda öğeyi dropdown menüsüne ekleyin
+      for (let i = 0; i < itemCount; i++) {
+        const item = items[i % items.length];
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.classList.add("dropdown-item", "d-flex", "align-items-center", "gap-2", "py-2");
+  
+        const circle = document.createElement("span");
+        circle.classList.add("d-inline-block", `bg-${item.color}`, "rounded-circle", "p-1");
+  
+        const textNode = document.createTextNode(item.text);
+  
+        link.appendChild(circle);
+        link.appendChild(textNode);
+        listItem.appendChild(link);
+        dropdownItemsContainer.appendChild(listItem);
+      }
+    });
+
+    let selectedItemTextGlobal;
+    //Düğün salonu seçme
+    async function handleItemSelection(event) {
+        event.preventDefault();
+        const infoTabElement = document.querySelector(".info-tab .content");
+        
+        const selectedItemText = event.target.textContent;
+        const selectedItemPlaceholder = document.getElementById("selectedItemPlaceholder");
+        selectedItemPlaceholder.textContent = selectedItemText;
+        selectedItemTextGlobal = selectedItemText;
+        console.log("Selected item:", selectedItemText);
+        const salon = doc(db,"salonlar",selectedItemText)
+        const docSnap = await getDoc(salon)
+
+        const adresPlaceholder = document.getElementById("adresPlaceholder");
+        const kapasitePlaceholder = document.getElementById("kapasitePlaceholder");
+        const musaitlikPlaceholder = document.getElementById("musaitlikPlaceholder");
+        var buton = document.getElementById("odeme-buton");
+
+        const kapasite = docSnap.data().kapasite
+        const tanim = docSnap.data().tanim
+        const adres = docSnap.data().adres
+
+        const masa_fiyat = docSnap.data().masa_fiyat
+        const sandalye_fiyat = docSnap.data().sandalye_fiyat
+
+        adresPlaceholder.textContent = adres;
+        kapasitePlaceholder.textContent = kapasite; 
+
+        const saatInput = document.getElementById("saat");
+        const saatValue = saatInput.value;
+
+
+        const tarihlerArray = docSnap.data().tarihler;
+        if(tarihlerArray.includes(selectedDate + " " + saatValue)){
+          musaitlikPlaceholder.textContent = "Dolu";
+          musaitlikPlaceholder.style.color = "red";
+          musaitlikPlaceholder.style.scale = 2;
+          alert("Düğün Salonu Belirtilen Tarihlerde Dolu");
+          buton.disabled = true;
+          buton.style.backgroundColor = "gray";
+        }else{
+          musaitlikPlaceholder.textContent = "Boş";
+          buton.disabled = false;
+          buton.style.backgroundColor = "blue";
+          musaitlikPlaceholder.style.color = "#00d000"; 
+          musaitlikPlaceholder.style.scale = 2;
+        }
+    
+    }
+
+    const paymentButton = document.getElementById("odeme-buton");
+        
+paymentButton.addEventListener("click", async function(event) {
+  event.preventDefault();
+  const tckimlikInput = document.getElementById("tckimlik1");
+  const tckimlikValue = tckimlikInput.value;
+  const tckimlik2Input = document.getElementById("tckimlik2");
+  const tckimlik2Value = tckimlik2Input.value;
+  const isimInput = document.getElementById("firstPerson");
+  const isimValue = isimInput.value;
+  const isim2Input = document.getElementById("secondPerson");
+  const isim2Value = isim2Input.value;
+  const telefonInput = document.getElementById("telefon");
+  const telefonValue = telefonInput.value;
+  const dugunInput = document.getElementById("dugun");
+  const dugunValue = dugunInput.value;
+  const salonValue = selectedItemTextGlobal; const tarihValue = selectedDate;
+  const saatInput = document.getElementById("saat"); const saatValue = saatInput.value;
+  console.log(selectedItemTextGlobal);  
+
+  const dugunRef = doc(db, "randevular", tckimlikValue);
+  await setDoc(dugunRef, {
+salon: salonValue,
+tarih: tarihValue + " " + saatValue,
+isim1: isimValue,
+tckimlik1: tckimlikValue,
+tckimlik2: tckimlik2Value,
+isim2: isim2Value,
+telefon: telefonValue,
+dugun: dugunValue ,
+});
+
+  const salonRef = doc(db, "salonlar", selectedItemTextGlobal);
+    await updateDoc(salonRef , {
+           tarihler: arrayUnion(selectedDate + " " + saatValue)
+        });
+
+}); 
+
+
+    // Add event listener to the parent container of dropdown items
+    const dropdownItemsContainer = document.getElementById("dropdownItems");
+    dropdownItemsContainer.addEventListener("click", handleItemSelection);
+           
+    auth.onAuthStateChanged(function (user) {
+    if (user) {
+      console.log(user);
+    } else {
+      window.location.href = 'login.html';
+    }
+  });
+        </script>
+
+        <script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.min.js'></script>
+        <script src="calendar.js"></script>
+
+    </body>
+</html>

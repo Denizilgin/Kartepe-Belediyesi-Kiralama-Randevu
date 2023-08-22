@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Düğün Randevu Admin Paneli</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		tr:not(:last-child) {
+		  border-bottom: 1px solid #ccc; /* Çizgi rengi ve kalınlığını istediğiniz gibi düzenleyebilirsiniz */
+		}</style>
+
+	</head>
+	<body>
+    <div style = "height: 50%; width: 100%;">
+    <h3 style = "text-align: center;">ÖDEMESİ YAPILMIŞ AKTİF İŞLEMLER</h3>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<table class="table table-dark" id = "data-table">
+					  <thead>
+						<tr class="bg-dark">
+						  <th>1. Kişi</th>
+						  <th>1. Kişi TC</th>
+						  <th>2. Kişi</th>
+						  <th>2. Kişi TC</th>
+              <th>Salon</th>
+						  <th>Tarih</th>
+              <th>Tür</th>
+						  <th>İletişim Telefon</th>
+						</tr>
+					  </thead>
+					  <tbody id="table-body">
+						<!--Veriler-->
+					  </tbody>
+					</table>	
+				</div>  
+			</div>
+		</div>
+ <h3 style = "text-align: center;">GERİ ALIM ONAY</h3>
+ <!--GERİ ALMA TABLOSU-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<table class="table table-dark" id = "data-table">
+					  <thead>
+						<tr class="bg-dark">
+						  <th>Kişi</th>
+              <th>TC</th>
+              <th>Salon</th>
+              <th>Tarih</th>
+              <th>Düğün</th>
+						  <th>Telefon</th>
+              <th>SİL</th>
+						</tr>
+					  </thead>
+					  <tbody id="table-body2">
+						<!--Veriler-->
+					  </tbody>
+					</table>	
+				</div>
+			</div>
+		</div>
+
+    <h3 style = "text-align: center;">GEÇMİŞ İŞLEMLER</h3>
+    <!--GEÇMİŞ İŞLEMLER TABLOSU-->
+    <div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<table class="table table-dark" id = "data-table">
+					  <thead>
+						<tr class="bg-dark">
+						  <th>1. Kişi</th>
+						  <th>1. Kişi TC</th>
+						  <th>2. Kişi</th>
+						  <th>2. Kişi TC</th>
+              <th>Salon</th>
+						  <th>Tarih</th>
+              <th>Tür</th>
+						  <th>İletişim Telefon</th>
+						</tr>
+					  </thead>
+					  <tbody id="table-body3">
+						<!--Veriler-->
+					  </tbody>
+					</table>	
+				</div>
+			</div>
+		</div>
+
+    <div class="thirdPart" style="height: 350px;">
+      <div class="info-box">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col-md-3 themed-grid-col"><h6 style="font-size: 20px; margin-right: 200px; margin-top: 1px;">BÜTÜN İŞLEMLERİ SİL</h6>
+            <button id="silButton" style="width: 100px; height: 40px; margin-top: 30px; margin-right: 200px;">ONAYLA</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script type="module">
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+	import { getFirestore, doc, getDoc, getDocs, collection, query , where, updateDoc,arrayUnion, arrayRemove, setDoc, deleteDoc} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+
+ const firebaseConfig = {
+	 apiKey: "AIzaSyDenol5uVp5yDBBnUCNTonO9cQUU-trWF8",
+	 authDomain: "kartepebelediye.firebaseapp.com",
+	 projectId: "kartepebelediye",
+	 storageBucket: "kartepebelediye.appspot.com",
+	 messagingSenderId: "993270259189",
+	 appId: "1:993270259189:web:9f2c893c694f1d768b14bc",
+ };
+
+ const app = initializeApp(firebaseConfig);
+ const auth = getAuth(app);
+ const db = getFirestore(app);
+
+ //1. Sekme Veri Ekleme
+ function addRowToTable(data) {
+  const tableBody = document.getElementById("table-body");
+  const row = document.createElement("tr");
+  row.className = "bg-success"; 
+
+  const rowData = [
+    data.isim1,
+    data.tckimlik1,
+    data.isim2,
+    data.tckimlik2,
+    data.salon,
+    data.tarih,
+    data.dugun,
+    data.telefon,
+  ];
+
+  rowData.forEach((cellData) => {
+    const cell = document.createElement("td");
+    cell.textContent = cellData;
+    row.appendChild(cell);
+  });
+
+  tableBody.appendChild(row);
+}
+
+
+//2. Sekme
+function addRowToTable2(data) {
+  const tableBody = document.getElementById("table-body2");
+  const row = document.createElement("tr");
+  row.className = "bg-primary"; 
+
+
+  const rowData = [
+    data.isim1,
+    data.tckimlik1,
+    data.salon,
+    data.tarih,
+    data.dugun,
+    data.telefon,
+    data.buton || "",
+  ];
+  
+  
+  rowData.forEach((cellData, index) => {
+  const cell = document.createElement("td");
+   if (index === 6) {
+    const button = document.createElement("button");
+    button.textContent = "ONAYLA";
+    button.id = data.tc;
+    button.addEventListener("click", async() => {
+
+    await setDoc(doc(db, "gecmis-islemler-dugun", data.tckimlik1), {
+    isim1: data.isim1,
+    tckimlik1: data.tckimlik1,
+    isim2: data.isim2,
+    tckimlik2: data.tckimlik2,
+    salon: data.salon,
+    tarih: data.tarih,
+    dugun: data.dugun,
+    telefon: data.telefon,
+});
+await deleteDoc(doc(db, "randevular", data.tckimlik1));
+location.reload();
+      });
+    cell.appendChild(button);
+  } else {
+    cell.textContent = cellData;
+  }
+  row.appendChild(cell);
+});
+  tableBody.appendChild(row);
+}
+
+//Geçmiş işlemelr veri ekleme
+function addRowToTable3(data) {
+  const tableBody = document.getElementById("table-body3");
+  const row = document.createElement("tr");
+  row.className = "bg-warning"; // Eğer satırın arkaplan rengini değiştirmek istiyorsanız, burayı düzenleyebilirsiniz.
+
+  const rowData = [
+    data.isim1,
+    data.tckimlik1,
+    data.isim2,
+    data.tckimlik2,
+    data.salon,
+    data.tarih,
+    data.dugun,
+    data.telefon,
+  ];
+
+  rowData.forEach((cellData) => {
+    const cell = document.createElement("td");
+    cell.textContent = cellData;
+    row.appendChild(cell);
+  });
+
+  tableBody.appendChild(row);
+}
+/*Ödemesi Yapılmamışlar Sekmesi
+function addRowToTable4(data) {
+  const tableBody = document.getElementById("table-body4");
+  const row = document.createElement("tr");
+  row.className = "bg-danger"; // Eğer satırın arkaplan rengini değiştirmek istiyorsanız, burayı düzenleyebilirsiniz.
+
+  const rowData = [
+    data.isim1,
+    data.tckimlik1,
+    data.isim2,
+    data.tckimlik2,
+    data.salon,
+    data.tarih,
+    data.dugun,
+    data.telefon,
+  ];
+
+  rowData.forEach((cellData) => {
+    const cell = document.createElement("td");
+    cell.textContent = cellData;
+    row.appendChild(cell);
+  });
+
+  tableBody.appendChild(row);
+}
+*/
+
+async function getDataAndPopulateTable() {
+  const querySnapshot = await getDocs(collection(db, "randevular"));
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    addRowToTable(data);
+    addRowToTable2(data);
+
+	
+  });
+}
+
+async function getDataAndPopulateTable2() {
+  const querySnapshot = await getDocs(collection(db, "gecmis-islemler-dugun"));
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    addRowToTable3(data);
+
+	
+  });
+}
+/*
+async function getDataAndPopulateTable3() {
+  const querySnapshot = await getDocs(collection(db, "kullanicilar-odemesiz-dugun"));
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    addRowToTable4(data);
+
+	
+  });
+}
+*/
+
+
+getDataAndPopulateTable();
+getDataAndPopulateTable2();
+
+auth.onAuthStateChanged(function (user) {
+    if (user) {
+      console.log(user);
+    } else {
+      window.location.href = 'login.html';
+    }
+  });
+
+  const sButton = document.getElementById("silButton");
+    const querySnapshot = await getDocs(collection(db, "randevular"));
+    const querySnapshot2 = await getDocs(collection(db, "gecmis-islemler-dugun"));
+    sButton.addEventListener("click", async function(event) {
+      querySnapshot.forEach(async (doc) => {
+      const docRef = doc.ref;
+      await deleteDoc(docRef);
+  });
+  querySnapshot2.forEach(async (doc) => {
+      const docRef = doc.ref;
+      await deleteDoc(docRef);
+  });
+
+  });
+
+
+ </script>
+
+
+	</body>
+</html>
+<!--
+	const docSnap2 = await getDoc(sayi_);
+                if (docSnap2.exists()) {
+                    const masa = docSnap2.data().masa;
+
+                    const yeniAdet = masa - azaltAdet;
+
+                    if (yeniAdet < 0) {
+                        alert("Lütfen geçerli bir sayı giriniz.!");
+                        return;
+                    }
+
+                    // Veritabanına güncellenmiş değeri kaydedin
+                    await updateDoc(sayi_, {
+                        masa: yeniAdet
+                    });
+-->

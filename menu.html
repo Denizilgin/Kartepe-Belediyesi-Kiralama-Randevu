@@ -1,0 +1,263 @@
+<html>
+  <head>
+      <title>Firebase_form</title>
+      <link rel="stylesheet" type="text/css" href="style.css"> 
+      <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Google+Sans:300,400,500'><link rel="stylesheet" href="calendar.css"> 
+      <link rel="stylesheet" type="text/css" href="calendar.css"> 
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+      <style>
+        
+      </style>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Kartepe Belediyesi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+          </div>
+        </nav>
+        <div>
+          <div style = "height: 330px;">
+            <div class = "menu-tab">
+              <div class="row mb-3 text-center">
+                <div class="col-md-4 themed-grid-col"><div class="col">
+                  <div class="info-tab" style = "height: 250px; width: 200px;">
+                    <div class="content">                 
+                      <h6>Kartepe Belediyesi Masa - Sandalye Kiralama</h6>      
+                      <div><i class="fa fa-shopping-cart" style ="font-size: 30px;"></i></div>
+                      <div style = "margin-top: 40px"> <a href="./koltukmasa.html" class="basic-buton">İncele</a></div>
+                    </div>
+                  </div>
+                </div></div>
+                <div class="col-md-4 themed-grid-col"><div class="info-tab2" style = "height: 250px; width: 200px;">
+                  <div class="content">                 
+                    <h6>Kartepe Belediyesi Düğün Salonu Randevu</h6>      
+                    <div><i class="fa fa-building" style ="font-size: 30px;"></i></div>
+                    <div style = "margin-top: 40px"> <a href="./dugun.html" class="basic-buton2">İncele</a></div>
+                  </div>
+              </div></div>
+                <div class="col-md-4 themed-grid-col"><div class="info-tab" style = "height: 250px; width: 200px;">
+                  <div class="content">                 
+                    <h6>Kartepe Belediyesi Admin Paneli</h6>      
+                    <div><i class="fa fa-wrench" style ="font-size: 30px;"></i></div>
+                    <div style = "margin-top: 20px"> <a href="./admin/dugunadmin.html" class="basic-buton">Düğün Salonu</a></div>
+                    <div style = "margin-top: 20px"> <a href="./admin/smadmin.html" class="basic-buton">Sandalye - Masa</a></div>
+                  </div>
+              </div></div>
+              </div>
+              
+            </div>            
+          </div>
+      </div>
+
+
+        
+
+      <!--
+        <div class="google-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24185.176487394052!2d30.02137477246835!3d40.7367894689201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb50227dea83eb%3A0x933344e9e9f8a4e5!2sKartepe%20Belediyesi!5e0!3m2!1str!2str!4v1691129945214!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      -->
+        
+        
+      
+
+  
+      
+      
+      <script>
+        document.getElementById("myButton").addEventListener("click", function() {
+            const fifthPart = document.getElementById("fifthPart");
+            fifthPart.scrollIntoView({ behavior: "smooth" });
+        });
+    </script>
+
+     
+        
+      <script type="module">
+             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+             import { getFirestore, doc, getDoc, getDocs, collection, query , where, updateDoc,arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+             import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+
+          const firebaseConfig = {
+              apiKey: "AIzaSyDenol5uVp5yDBBnUCNTonO9cQUU-trWF8",
+              authDomain: "kartepebelediye.firebaseapp.com",
+              projectId: "kartepebelediye",
+              storageBucket: "kartepebelediye.appspot.com",
+              messagingSenderId: "993270259189",
+              appId: "1:993270259189:web:9f2c893c694f1d768b14bc",
+          };
+
+          const app = initializeApp(firebaseConfig);
+          const auth = getAuth(app)
+          const db = getFirestore(app);
+
+          const masaSayisi = doc(db, "bilgi", "adet");
+      
+          /*Veriyi Texte Yazdirma 
+          async function updateAdetValue() {
+              const sayi_ = doc(db, "bilgi", "adet");
+
+              // Veritabanından "adet" alanını alın
+              const docSnap2 = await getDoc(sayi_); 
+              if (docSnap2.exists()) {
+                  const masa = docSnap2.data().masa;
+
+                  // Update the <p> element with the "adet" value
+                  const adetValueElement = document.getElementById("adetValue");
+                  adetValueElement.textContent = `Adet Sayısı: ${masa}`;
+              } else {
+                  console.log("No such document!");
+              }
+          }
+          updateAdetValue();
+
+
+
+          //Buton ile sayı arttırma
+          document.getElementById("myButton").onclick = async function() {
+     const sayi_ = doc(db, "bilgi", "adet");
+
+     const azaltAdetInput = document.getElementById("azaltAdetInput");
+     const azaltAdet = parseInt(azaltAdetInput.value, 10);
+              if (isNaN(azaltAdet) || azaltAdet < 1) {
+                  alert("Hatalı değer girdiniz! Lütfen 1 veya daha büyük bir sayı girin.");
+                  return;
+              }
+
+
+              const docSnap2 = await getDoc(sayi_);
+              if (docSnap2.exists()) {
+                  const masa = docSnap2.data().masa;
+
+                  const yeniAdet = masa - azaltAdet;
+
+                  if (yeniAdet < 0) {
+                      alert("Lütfen geçerli bir sayı giriniz.!");
+                      return;
+                  }
+
+                  // Veritabanına güncellenmiş değeri kaydedin
+                  await updateDoc(sayi_, {
+                      masa: yeniAdet
+                  });
+
+                  // Veriyi ekrana yazdırın
+                  var veriListesi = document.getElementById("veriListesi");
+                  var li = document.createElement("li");
+                  li.textContent = `Güncellenmiş Veri: ${yeniAdet} (Azaltılan Adet: ${azaltAdet})`;
+                  veriListesi.appendChild(li);
+              } else {
+                  console.log("No such document!");
+              }
+          };
+             
+          */
+            
+
+          function selectedDateKontrol(){
+              const dropdownSalonlarDiv = document.getElementById("dropdown-salonlar"); 
+              if(typeof selectedDate === 'undefined'){
+                  
+                  dropdownSalonlarDiv.style.pointerEvents = "none";
+              }else{dropdownSalonlarDiv.style.pointerEvents = "auto";}
+              
+          }
+          selectedDateKontrol();
+          const intervalID = setInterval(selectedDateKontrol, 1000);  
+
+          //Düğün salonu veritabanı ayarları
+          document.addEventListener("DOMContentLoaded", async function () {
+    // Dropdown menüsüne eklemek istediğiniz öğe sayısı
+    const dugunadet = doc(db, "bilgi", "adet");
+    const docSnap = await getDoc(dugunadet);  
+    
+
+    const dropdownItemsContainer = document.getElementById("dropdownItems");
+    let items = [];
+    const itemsCollectionRef = collection(db, "salonlar"); 
+    const querySnapshot = await getDocs(itemsCollectionRef);
+    querySnapshot.forEach((itemDoc) => {  
+    const item = {
+      color: "success", 
+      text: itemDoc.id, 
+    };
+    items.push(item);
+  });
+  const itemCount = querySnapshot.size
+    // Belirtilen sayıda öğeyi dropdown menüsüne ekleyin
+    for (let i = 0; i < itemCount; i++) {
+      const item = items[i % items.length];
+      const listItem = document.createElement("li");
+      const link = document.createElement("a");
+      link.classList.add("dropdown-item", "d-flex", "align-items-center", "gap-2", "py-2");
+
+      const circle = document.createElement("span");
+      circle.classList.add("d-inline-block", `bg-${item.color}`, "rounded-circle", "p-1");
+
+      const textNode = document.createTextNode(item.text);
+
+      link.appendChild(circle);
+      link.appendChild(textNode);
+      listItem.appendChild(link);
+      dropdownItemsContainer.appendChild(listItem);
+    }
+  });
+
+  //Düğün salonu seçme
+  async function handleItemSelection(event) {
+      event.preventDefault();
+      const infoTabElement = document.querySelector(".info-tab .content");
+      
+      var selectedItemText = event.target.textContent;
+      const selectedItemPlaceholder = document.getElementById("selectedItemPlaceholder");
+      selectedItemPlaceholder.textContent = selectedItemText;
+      console.log("Selected item:", selectedItemText);
+      const salon = doc(db,"salonlar",selectedItemText)
+      const docSnap = await getDoc(salon)
+
+      const tanimPlaceholder = document.getElementById("tanimPlaceholder");
+      const adresPlaceholder = document.getElementById("adresPlaceholder");
+      const kapasitePlaceholder = document.getElementById("kapasitePlaceholder");
+
+      const kapasite = docSnap.data().kapasite
+      const tanim = docSnap.data().tanim
+      const adres = docSnap.data().adres
+
+      adresPlaceholder.textContent = adres;
+      kapasitePlaceholder.textContent = kapasite;
+      tanimPlaceholder.textContent = tanim;
+
+      const tarihlerArray = docSnap.data().tarihler;
+      if(tarihlerArray.includes(selectedDate)){
+        alert("Seçtiğiniz tarihlerde salon dolu.")
+      }else{
+
+      }
+  
+  }
+
+  // Add event listener to the parent container of dropdown items
+  const dropdownItemsContainer = document.getElementById("dropdownItems");
+  dropdownItemsContainer.addEventListener("click", handleItemSelection);
+         
+  auth.onAuthStateChanged(function (user) {
+    if (user) {
+      console.log(user);
+    } else {
+      window.location.href = 'login.html';
+    }
+  });
+      </script>
+
+      <script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.min.js'></script>
+      <script src="calendar.js"></script>
+      <script src = "alertbox.js"></script>
+  </body>
+</html>
